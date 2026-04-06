@@ -8,6 +8,7 @@ from django.views.generic.edit import FormView
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.contrib.auth.mixins import LoginRequiredMixin
+#from django.shortcuts import redirect
 
 from django.urls import reverse_lazy
 from .models import Task
@@ -62,20 +63,45 @@ class CustomLoginView(LoginView):
     def get_success_url(self):
         return reverse_lazy("task")
 
+# class RegisterPage(FormView):
+#     template_name = 'todo/register.html'
+#     form_class = UserCreationForm
+#     redirect_authenticated_user = True
+#     success_url = reverse_lazy('task')
+
+#     def form_valid(self, form):
+#         user=form.save()
+#         if user is not None:
+#             login(self.request,user)
+#         return super(RegisterPage,self).form_valid(form)
+#     def get(self,*args,**kwargs):
+#         if(self.request.user.is_authenticated):
+#             return redirect('task')
+#         return  super(RegisterPage,self).get(*args,*kwargs)
+
+
+from django.views.generic.edit import FormView
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login
+from django.shortcuts import redirect
+from django.urls import reverse_lazy
+
 class RegisterPage(FormView):
     template_name = 'todo/register.html'
     form_class = UserCreationForm
-    redirect_authenticated_user = True
     success_url = reverse_lazy('task')
 
     def form_valid(self, form):
-        user=form.save()
-        if user is not None:
-            login(self.request,user)
-        return super(RegisterPage,self).form_valid(form)
-    def get(self,*args,**kwargs):
-        if(self.request.user.is_authenticated):
+        user = form.save()
+        login(self.request, user)
+        return super().form_valid(form)
+
+    def form_invalid(self, form):
+        return self.render_to_response(self.get_context_data(form=form))
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
             return redirect('task')
-        return  super(RegisterPage,self).get(*args,*kwargs)
+        return super().get(request, *args, **kwargs)
 
 
