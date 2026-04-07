@@ -1,5 +1,26 @@
 # 📝 Django Todo App
 
+<video controls width="600">
+  <source src="https://raw.githubusercontent.com/rojanagunoori/todo-python-using-Django/main/static/todo-using-pythoon-django.mp4" type="video/mp4">
+</video>
+
+<!-- 👉 If video doesn't play, click here:
+[▶ Watch Demo Video](https://raw.githubusercontent.com/rojanagunoori/todo-python-using-Django/main/static/todo-using-pythoon-django.mp4) -->
+
+---
+
+## 📸 Screenshots
+
+![Screenshot 1](https://raw.githubusercontent.com/rojanagunoori/todo-python-using-Django/main/static/todo-python-django1.png)
+
+![Screenshot 2](https://raw.githubusercontent.com/rojanagunoori/todo-python-using-Django/main/static/todo-python-django2.png)
+
+![Screenshot 3](https://raw.githubusercontent.com/rojanagunoori/todo-python-using-Django/main/static/todo-python-django3.png)
+
+![Screenshot 4](https://raw.githubusercontent.com/rojanagunoori/todo-python-using-Django/main/static/todo-python-django4.png)
+
+---
+
 A full-stack **Todo List Web Application** built using Django that allows users to manage their daily tasks efficiently with authentication and personalized task management.
 
 ![Django](https://img.shields.io/badge/Django-5.0-green)
